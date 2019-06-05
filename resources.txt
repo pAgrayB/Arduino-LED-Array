@@ -1,1 +1,3 @@
 Concept of controling 64 LEDs with one wire - https://www.arduino.cc/en/Tutorial/ShiftOut
+SN74HC595N Guide - https://www.idogendel.com/en/archives/211
+SN74HC595N Datasheet - https://www.ti.com/lit/ds/symlink/sn54hc595-sp.pdf

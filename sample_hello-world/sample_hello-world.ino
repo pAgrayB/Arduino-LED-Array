@@ -37,6 +37,6 @@ void loop() {
     //take the latch pin high so the LEDs will light up:
     digitalWrite(latchPin, HIGH);
     // pause before next value:
-    delay(500);
+    delay(100);
   }
 }
