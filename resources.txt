@@ -1,3 +1,7 @@
+LED Cube Project Github - https://github.com/VectStudio/LED_CUBE/blob/master/CUBE-SCHEMATIC.pdf
 Concept of controling 64 LEDs with one wire - https://www.arduino.cc/en/Tutorial/ShiftOut
 SN74HC595N Guide - https://www.idogendel.com/en/archives/211
 SN74HC595N Datasheet - https://www.ti.com/lit/ds/symlink/sn54hc595-sp.pdf
+Arduino SPI Tips - https://arduino.stackexchange.com/questions/16348/how-do-you-use-spi-on-an-arduino
+Different Methods to Drive LEDs and their Efficiency - https://electronics.stackexchange.com/questions/55823/how-can-i-efficiently-drive-an-led
+LED Matrix Design Tips - https://techtutorialsx.com/2016/06/21/designing-a-led-matrix/

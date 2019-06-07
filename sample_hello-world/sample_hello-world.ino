@@ -5,13 +5,16 @@
 //  Modified: 2 Jun 2019                                 
 //  Version : 1.0                                             
 //  Notes   : Code for simulating ball dropped from rest at a height of 8*h,
-//            where h is the space between LEDs in meters
+//            where h is the space between LEDs in meters with ONE SN74HC595 shift
+              register
 //****************************************************************
+
+#include <SPI.h>
 
 //Pin connected to RCLK of SN74HC595N
 int latchPin = 8;
 //Pin connected to SRCLK of SN74HC595N
-int clockPin = 12;
+//int clockPin = 12;
 ////Pin connected to SER of SN74HC595N
 int dataPin = 11;
 
@@ -58,20 +61,24 @@ void updateDirection() {
 void setup() {
   //set pins to output so you can control the shift register
   pinMode(latchPin, OUTPUT);
-  pinMode(clockPin, OUTPUT);
+  //pinMode(clockPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
+
+  SPI.begin();
+  SPI.beginTransaction(SPISettings(4000000, LSBFIRST, SPI_MODE0));
+  
 }
 
 void loop() {
     
-    // take the latchPin low so 
+    // take the (SS) latchPin low so 
     // the LEDs don't change while you're sending in bits:
     digitalWrite(latchPin, LOW);
     
     // shift out the bits:
-    shiftOut(dataPin, clockPin, LSBFIRST, value);  
+    SPI.transfer(value);
 
-    //take the latch pin high so the LEDs will light up:
+    //take the (SS) latch pin high so the LEDs will light up:
     digitalWrite(latchPin, HIGH);
     // pause before next value:
     delay(time * 1000); // delay needs msecs  
