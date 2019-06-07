@@ -7,21 +7,21 @@
 #include <SPI.h>
 int latchPin = 8;
 int dataPin = 11;
-uint16_t data = 0x5224; // two bytes to send to LEDs
+uint16_t data = 0x0001; // two bytes to send to LEDs
 
 void setup() {
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
+  Serial.begin(9600);
   SPI.begin();
   SPI.beginTransaction(SPISettings(4000000, LSBFIRST, SPI_MODE0));
 
 }
 
 void loop() {
-  for (data = 1; data < 0xFFFF; data++) {
     digitalWrite(latchPin, LOW);
-    SPI.transfer16(data);
+    SPI.transfer16(0x0001 * pow(2,5));
+    Serial.println(0x0001 * pow(2,5));
     digitalWrite(latchPin, HIGH);
-    delay(1000);  
-  }
+    delay(1000); 
 }
