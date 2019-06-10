@@ -5,14 +5,14 @@ This repository holds the project files in designing and building a 16-LED long 
 
 ## Control Design
 
-### Shift-Registers
 ![Shift Registers](https://github.com/pAgrayB/LED-ARRAY/blob/master/Circuit%20Photos/Shift-Registers.JPG)
+Shift-Registers
 
 
 ## Power Design
 
-### Arduino Uno
 ![Arduino Wiring](https://github.com/pAgrayB/LED-ARRAY/blob/master/Circuit%20Photos/Arduino.JPG)
-
-### LEDs Driven by Resistors
+Arduino Uno
+ 
 ![LEDs Driven by Resistors](https://github.com/pAgrayB/LED-ARRAY/blob/master/Circuit%20Photos/LEDs.JPG)
+LEDs Driven by Resistors
