@@ -1,10 +1,26 @@
 #include <SPI.h>
+
+#define initial 0b1110000011100000
+#define final 0b0000011100000111
+#define wrap 0b1000000000000000
+#define first 0b1000001110000011
+#define second 0b1100000111000001
+
+typedef enum Patterns {train, love, party, MAX_PATS} pattern_t;
+
+
 int latchPin = 8;
 int dataPin = 11;
 int LED = 0;
 int i = 0;
 int j = 15;
 unsigned long enterTime = 0;
+uint16_t value = 0b1110000011100000;
+uint16_t woopValue = 0b0111100000000000;
+char op = 'r';
+
+pattern_t current = train;
+
 
 
 void setup() {
@@ -16,7 +32,89 @@ void setup() {
 
 void loop() {
 
-  enterTime = millis();
+  switch (current)
+  {
+    case train:
+      trainPattern();
+      break;
+  
+    case love:
+      bitterSweetPattern();
+      break;
+
+    case party:
+      woop();
+      break;
+      
+
+    default:
+      turnOnMany(0b1001100110011001);
+      break;
+  }
+  
+
+}
+
+// Runs each pattern function in the main
+// loop of the arduino ALONE for the effect
+
+void woop () {
+
+  turnOnMany(woopValue);
+  op = dir(woopValue, op);
+  if (op == 'r') {
+    woopValue >>= 1;
+  } else if (op == 'l') {
+    woopValue <<= 1;
+  }
+
+  delay(50);
+}
+
+char dir(uint16_t check, char op) {
+  char returnOp = 'l';
+  if (check == 0b1111000000000000) {
+    return returnOp = 'r';
+  } else if (check == 0b0000000000001111) {
+    return returnOp = 'l';
+  } else {
+    return op;
+  }
+}
+
+
+void trainPattern () { 
+  
+  turnOnMany(value);
+
+  // Shift the train to the right
+  value = value >> 1;
+
+  // When the train reaches the end,
+  // perform the wrap around light sequence.
+  if (value == final >> 1) {
+    value = first;
+    delay(500);
+    turnOnMany(value);
+    delay(500);
+
+    value = second;
+    turnOnMany(value);
+    delay(500);
+
+    value = initial;
+    turnOnMany(value);
+    delay(500);
+
+    value = value >> 1;
+    
+  } else {
+    delay(500);
+  }
+}
+
+void bitterSweetPattern () {
+    enterTime = millis();
   while (millis() - enterTime < 200) { // exit after 200ms
     turnOn(i);
     delay(1);
@@ -30,15 +128,8 @@ void loop() {
   counterCheck();
 }
 
-void turnOnMany (byte packed) {
-  
-
-
-  
-}
-
-
-void turnOn (int LED_index) {
+// Helper function of bitterSweetPattern
+void turnOn (int LED_index) { 
 
   if (LED_index < 0 || LED_index >= 16) {
     return;
@@ -57,6 +148,7 @@ void turnOn (int LED_index) {
   digitalWrite(latchPin, HIGH);
 }
 
+// Helper function of bitterSweetPattern
 void counterCheck () {
   if (i == 16) {
     i = 0;
@@ -64,4 +156,12 @@ void counterCheck () {
   if (j == -1) {
     j = 15;
   }
+}
+
+// General helper function
+void turnOnMany (uint16_t packed) {
+
+  digitalWrite(latchPin, LOW);
+  SPI.transfer16(packed);
+  digitalWrite(latchPin, HIGH);
 }
