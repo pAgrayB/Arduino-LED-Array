@@ -6,11 +6,9 @@
 #define first 0b1000001110000011
 #define second 0b1100000111000001
 
-typedef enum Patterns {train, love, woop, bounce, MAX_PATS} pattern_t;
-
-
 int latchPin = 8;
 int dataPin = 11;
+
 int LED = 0;
 int i = 0;
 int j = 15;
@@ -27,11 +25,13 @@ float vel = 0; // Initial velocity is 0 (m/s)
 float time = sqrt((2 * h)/9.81); // Time between latches (sec)
 // End variables for "bounce" pattern
 
+typedef enum Patterns {train, love, woop, bounce, MAX_PATS} pattern_t;
 
+//
 // SELECT PATTERN HERE
 pattern_t current = bounce;
 // SELECT PATTERN HERE
-
+//
 
 void setup() {
   pinMode(latchPin, OUTPUT);
