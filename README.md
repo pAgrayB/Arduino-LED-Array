@@ -1,5 +1,5 @@
 # LED-Array
-This repository serves to docuement how to use and the power design of a 16-LED long array controlled by an Arduino Uno. A single GPIO port is expanded using two SN74HC595N shift-registers and the SPI Arduino Library. 
+This repository serves to document how to use the code for and the power design of a 16-LED long array controlled by an Arduino Uno. A single GPIO port is expanded using two SN74HC595N shift-registers and the SPI Arduino Library. 
 
 ## How to Use Patterns.ino
 1. Open Patterns.ino in Arduino IDE
