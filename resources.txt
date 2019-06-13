@@ -5,3 +5,5 @@ SN74HC595N Datasheet - https://www.ti.com/lit/ds/symlink/sn54hc595-sp.pdf
 Arduino SPI Tips - https://arduino.stackexchange.com/questions/16348/how-do-you-use-spi-on-an-arduino
 Different Methods to Drive LEDs and their Efficiency - https://electronics.stackexchange.com/questions/55823/how-can-i-efficiently-drive-an-led
 LED Matrix Design Tips - https://techtutorialsx.com/2016/06/21/designing-a-led-matrix/
+
+Shift-Register Component Schedmatic - https://easyeda.com/search?indextype=components&wd=74hc59&page=5
