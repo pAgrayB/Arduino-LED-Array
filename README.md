@@ -9,4 +9,6 @@ This repository serves to document how to use the code for and the power design 
   <br> `pattern_t current = bounce;`
 4. Compile and upload to Uno.
 
-## Power Design
+## Future Improvements
+1. Clean and better document code.
+2. Use different LED power design, such as driving array with constant current sources to avoid waste in power in resistors.
