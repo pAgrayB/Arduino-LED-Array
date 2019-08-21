@@ -29,7 +29,7 @@ typedef enum Patterns {train, love, woop, bounce, MAX_PATS} pattern_t;
 
 //
 // SELECT PATTERN HERE
-pattern_t current = bounce;
+pattern_t current = train;
 // SELECT PATTERN HERE
 //
 
